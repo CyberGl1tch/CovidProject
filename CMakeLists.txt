@@ -1,6 +1,6 @@
-# cmake_minimum_required(VERSION <specify CMake version here>)
-project(untitled)
+cmake_minimum_required(VERSION 3.16)
+project(rand_waypoint_system)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled main.cpp UserChains.cpp UserChains.h)
+add_executable(rand_waypoint_system main.cpp)
