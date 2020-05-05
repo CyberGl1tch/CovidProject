@@ -27,20 +27,30 @@ void UserChains::add_lick(int n,int n_x,int n_y,bool isInfected){
         tail=tail->next;
     }
 }
-/*link *gethd(){
+link *gethd(){
     return head;
-}*/
+}
 void UserChains::after (link *a , int i){
     link*p = new link;
 
 }
-void UserChains::delete_lk(link *prevlk){
-    //will delete the next link of the link given
-    //prevlk= previus link
-    link *temp;
-    temp = prevlk->next;
-    prevlk->next=temp->next;
-    delete temp;
+void UserChains::delete_lk(int j){
+   //prevlk= previus link
+        link *prevlk;
+        prevlk=gethd();
+        int i;
+        if (j>1) {
+            j--;
+            for (i = 1; i < j; i++) {
+            prevlk=prevlk->next;//reaches the previus link to that that we want to delete
+            }
+        link *temp;
+        temp = prevlk->next;
+        prevlk->next=temp->next;//deletes what we want
+        delete temp;
+        }
+        else{
+            cout<<"wrong number"<<endl;//if num smaller than 1
 }
 void UserChains::display() {//will be moded to show the users final
     // data chill just working with it
