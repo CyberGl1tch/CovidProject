@@ -1,0 +1,26 @@
+    link *get_link(int n,int n_x,int n_y,bool isInfected){
+        link *new_lk= (link*)malloc(sizeof(link));//allocata the space
+        new_lk->isInfected=isInfected;
+        new_lk->data=n;
+        new_lk->x=n_x;
+        new_lk->y=n_y;
+        new_lk->time=n * 30;
+        return new_lk;
+
+    }
+    void add_link_in_middle(int m_x,int m_n,int m_xc,int m_y,bool m_isInfected){//x the place of before link
+        link *mid_node=get_link(m_n,m_xc,m_y,m_isInfected);
+        link *new_link;
+        new_link=gethd();
+        int i;
+        m_x--;
+        if (m_x>1) {
+            x--;
+            for (i = 1; i < m_x; i++) {
+                new_link = new_link->next;//reaches the previus link to that that we want to edit
+            }
+        }
+        mid_node->next=new_link->next;
+        new_link->next=mid_node;
+
+    }
