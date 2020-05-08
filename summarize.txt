@@ -1,0 +1,56 @@
+void summarize(int R) {
+        bool y;
+        bool x;
+        int z = 1;
+        int c = 1;//counter
+        link *comparer = gethd();
+        int least_space_x = comparer->x - R;
+        int max_space_x = comparer->x + R;
+
+        int least_space_y = comparer->y - R;
+        int max_space_y = comparer->y + R;
+        while (comparer->next != NULL) {
+            link *temp = comparer->next;
+
+                //checks if the cords are within R
+
+                if (temp->x >= least_space_x && temp->x <= max_space_x) { x = true; }
+                else { x = false; }
+                if (temp->y >= least_space_y && temp->y <= max_space_y) { y = true; }
+                else { y = false; }
+                z++;
+                if (x == true && y == true) {
+                    c++;
+                    //the deletion part
+
+                }
+                else {
+                    least_space_x = comparer->x - R;
+                    max_space_x = comparer->x + R;
+
+                    least_space_y = comparer->y - R;
+                    max_space_y = comparer->y + R;
+                    if(c>2){
+                        cout<<c<<endl;
+                        link* idk=gethd();
+                        if (z>1) {
+                            z--;
+                            for (int i = 1; i < z; i++) {
+                                idk = idk->next;
+                            }
+                        }
+                        c--;
+                        for (int j=1;j<c;j++) {
+                            link *tempikd;
+                            tempikd = idk->next;
+                            idk->next = tempikd->next;//deletes what we want
+                            delete tempikd;
+                        }
+
+
+                    }
+                    c=0;
+                }
+                comparer = comparer->next;
+        }
+    }
