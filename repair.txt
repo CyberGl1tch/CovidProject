@@ -1,0 +1,44 @@
+    
+ link *get_link(int n,int n_x,int n_y,bool isInfected){
+        link *new_lk= (link*)malloc(sizeof(link));//allocata the space
+        new_lk->isInfected=isInfected;
+        new_lk->data=n;
+        new_lk->x=n_x;
+        new_lk->y=n_y;
+        new_lk->time=n * 30;
+        return new_lk;
+
+    }
+
+
+
+void repair() {
+        int c = 0;
+        link *this_link = gethd();
+        link *next_link = this_link->next;
+        while (next_link->next != NULL) {
+            c++;//pun intended
+            int this_n = this_link->data;
+            int next_n = next_link->data-1;
+            if (this_n != next_n) {
+                //creates a node
+                int n_n = this_link->data + 1;//the data
+                int n_xc = (this_link->x + next_link->x) / 2;
+                int n_y = (this_link->y + next_link->y) / 2;
+                bool n_isInfected = this_link->isInfected; //this next same thing
+                link *mid_node = get_link(n_n, n_xc, n_y, n_isInfected);
+                link *new_link = gethd();
+                n_n--;
+                if (n_n > 1) {
+                    for (int i = 1; i < n_n; i++) {
+                        new_link = new_link->next;//reaches the previus link to that that we want to edit
+                    }
+
+                }
+                mid_node->next = new_link->next;
+                new_link->next = mid_node;
+            }
+            this_link = this_link->next;
+            next_link = next_link->next;
+        }
+    }
