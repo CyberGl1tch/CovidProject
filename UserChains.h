@@ -21,6 +21,8 @@ public:
     link *gethd(){
         return head;
     }
+    void summarize(int);
+    void repair();
     void after (link *a , int i);
     void delete_lk(link *prevlk);
     void display();
